@@ -11,7 +11,7 @@ import play.core.{ApplicationProvider, DefaultWebCommands, SourceMapper, WebComm
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import com.typesafe.config.ConfigFactory
-import cqrs.publicserver.PublicServer
+import cqrs.publicserver.documented.PublicServer
 import cqrs.commands.Commands
 import cqrs.queries.{Queries, QueriesService}
 

@@ -1,7 +1,7 @@
 package cqrs.publicserver
 
 import cqrs.publicserver.documented.PublicEndpointsDocumentation
-import endpoints.documented.openapi.OpenApi
+import endpoints.documented.openapi.model.OpenApi
 import endpoints.play.server.circe.JsonEntities
 import endpoints.play.server.{Assets, Endpoints}
 import play.api.routing.{Router => PlayRouter}
@@ -35,7 +35,6 @@ object BootstrapEndpoints extends Endpoints with Assets with JsonEntities {
           <html>
             <head>
               <script src="${assets.call(asset("example-cqrs-web-client-fastopt.js")).url}" defer></script>
-              <script src="${assets.call(asset("example-cqrs-web-client-launcher.js")).url}" defer></script>
               <title>Meters</title>
             </head>
             <body></body>

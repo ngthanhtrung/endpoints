@@ -164,7 +164,7 @@ val `example-basic-akkahttp-server` =
 val `example-cqrs-public-endpoints` =
   CrossProject("example-cqrs-public-endpoints-jvm", "example-cqrs-public-endpoints-js", file("examples/cqrs/public-endpoints"), CrossType.Pure)
     .settings(noPublishSettings ++ `scala 2.11 to 2.12`: _*)
-    .dependsOnLocalCrossProjects("openapi-circe", "example-cqrs-circe-instant")
+    .dependsOnLocalCrossProjects("openapi-circe", "example-cqrs-circe-instant", "json-schema-generic")
 
 val `example-cqrs-public-endpoints-jvm` = `example-cqrs-public-endpoints`.jvm
 
@@ -182,7 +182,7 @@ val `example-cqrs-web-client` =
         "org.julienrf" %%% "faithful-cats" % "0.2",
         "org.scala-js" %%% "scalajs-java-time" % "0.2.0"
       ),
-      persistLauncher := true
+      scalaJSUseMainModuleInitializer := true
     )
     .dependsOn(`xhr-client-faithful`, `xhr-client-circe`)
     .dependsOn(`example-cqrs-public-endpoints-js`)
@@ -193,10 +193,7 @@ val `example-cqrs-public-server` =
     .settings(noPublishSettings ++ `scala 2.11`: _*)
     .settings(
       libraryDependencies += "com.typesafe.play" %% "twirl-api" % "1.2.0",
-      unmanagedResources in Compile ++= Seq(
-        (fastOptJS in (`example-cqrs-web-client`, Compile)).map(_.data).value,
-        (packageScalaJSLauncher in (`example-cqrs-web-client`, Compile)).map(_.data).value
-      ),
+      unmanagedResources in Compile += (fastOptJS in (`example-cqrs-web-client`, Compile)).map(_.data).value,
       (sourceGenerators in Compile) += Def.task {
         assets.AssetsTasks.generateDigests(
           baseDirectory = (crossTarget in fastOptJS in `example-cqrs-web-client`).value,
