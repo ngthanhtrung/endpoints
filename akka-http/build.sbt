@@ -10,8 +10,8 @@ val `akka-http-server` =
     .settings(
       name := "endpoints-akka-http-server",
       libraryDependencies ++= Seq(
-        "com.typesafe.akka" %% "akka-http" % "10.0.1",
-        "com.typesafe.akka" %% "akka-http-testkit" % "10.0.1" % Test,
+        "com.typesafe.akka" %% "akka-http" % "10.0.10",
+        "com.typesafe.akka" %% "akka-http-testkit" % "10.0.10" % Test,
         "org.scalatest" %% "scalatest" % "3.0.1" % Test
       )
     )
@@ -24,7 +24,7 @@ val `akka-http-server-circe` =
     .settings(
       name := "endpoints-akka-http-server-circe",
       libraryDependencies ++= Seq(
-        "de.heikoseeberger" %% "akka-http-circe" % "1.11.0"
+        "de.heikoseeberger" %% "akka-http-circe" % "1.19.0-M2"
       )
     )
     .dependsOn(`akka-http-server`, `algebra-circe-jvm`)
