@@ -36,7 +36,6 @@ releaseProcess := Seq[ReleaseStep](
   releaseStepCommandAndRemaining("+publishSigned"),
   setNextVersion,
   commitNextVersion,
-  releaseStepCommand(Sonatype.SonatypeCommand.sonatypeReleaseAll),
   releaseStepCommandAndRemaining("+manual/ghpagesPushSite"),
   pushChanges
 )
