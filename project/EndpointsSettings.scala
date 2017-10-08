@@ -1,6 +1,8 @@
 import sbt._
 import sbt.Keys._
 
+import bintray.BintrayPlugin.autoImport._
+
 object EndpointsSettings {
 
   val commonSettings = Seq(
@@ -55,7 +57,8 @@ object EndpointsSettings {
         url(s"https://github.com/julienrf/endpoints"),
         s"scm:git:git@github.com:julienrf/endpoints.git"
       )
-    )
+    ),
+    bintrayRepository := "endpoints"
   )
 
   val noPublishSettings = commonSettings ++ Seq(
