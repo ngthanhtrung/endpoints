@@ -49,7 +49,7 @@ object EndpointsSettings {
     apiURL := Some(url(s"http://julienrf.github.io/endpoints/api/${version.value}/")),
     autoAPIMappings := true,
     homepage := Some(url(s"https://github.com/julienrf/endpoints")),
-    licenses := Seq("MIT License" -> url("http://opensource.org/licenses/mit-license.php")),
+    licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
     scmInfo := Some(
       ScmInfo(
         url(s"https://github.com/julienrf/endpoints"),
