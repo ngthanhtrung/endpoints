@@ -182,7 +182,7 @@ val `example-cqrs-web-client` =
         "org.julienrf" %%% "faithful-cats" % "0.2",
         "org.scala-js" %%% "scalajs-java-time" % "0.2.0"
       ),
-      persistLauncher := true
+      scalaJSUseMainModuleInitializer := true
     )
     .dependsOn(`xhr-client-faithful`, `xhr-client-circe`)
     .dependsOn(`example-cqrs-public-endpoints-js`)
@@ -194,8 +194,7 @@ val `example-cqrs-public-server` =
     .settings(
       libraryDependencies += "com.typesafe.play" %% "twirl-api" % "1.2.0",
       unmanagedResources in Compile ++= Seq(
-        (fastOptJS in (`example-cqrs-web-client`, Compile)).map(_.data).value,
-        (packageScalaJSLauncher in (`example-cqrs-web-client`, Compile)).map(_.data).value
+        (fastOptJS in (`example-cqrs-web-client`, Compile)).map(_.data).value
       ),
       (sourceGenerators in Compile) += Def.task {
         assets.AssetsTasks.generateDigests(
