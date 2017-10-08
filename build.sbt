@@ -43,8 +43,8 @@ releaseProcess := Seq[ReleaseStep](
 addCommandAlias("shadowPublish", List(
   "akka-http-server",
   "akka-http-server-circe",
-  "algebra",
-  "algebra-circe",
+  "algebraJS", "algebraJVM",
+  "algebra-circeJS", "algebra-circeJVM",
   "xhr-client",
   "xhr-client-circe"
 ).map(_ + "/publish").mkString(";", ";", ""))
